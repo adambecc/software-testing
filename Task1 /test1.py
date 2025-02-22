@@ -23,50 +23,50 @@ for product in products:
             time.sleep(2)
 
 driver.find_element(By.ID, "giftcard_4_RecipientName").send_keys("Elon Musk")
-time.sleep(1)
+time.sleep(2)
 driver.find_element(By.ID, "giftcard_4_SenderName").send_keys("Adam Becc")
-time.sleep(1)
+time.sleep(2)
 driver.find_element(By.ID, "addtocart_4_EnteredQuantity").clear()
 driver.find_element(By.ID, "addtocart_4_EnteredQuantity").send_keys(5000)
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "add-to-cart-button-4").click()
-time.sleep(1)
+time.sleep(10)
 driver.find_element(By.ID, "add-to-wishlist-button-4").click()
-time.sleep(1)
+time.sleep(10)
 
 #driver.find_element(By.CSS_SELECTOR, "a[href='/jewelry']").click()
 driver.find_element(By.LINK_TEXT, "JEWELRY").click()
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.LINK_TEXT, "Create Your Own Jewelry").click()
-time.sleep(1)
+time.sleep(2)
 
 material = Select(driver.find_element(By.ID, "product_attribute_71_9_15"))
-time.sleep(1)
+time.sleep(2)
 material.select_by_visible_text("Silver (1 mm)")
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "product_attribute_71_10_16").send_keys("80")
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "product_attribute_71_11_17_50").click()
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "addtocart_71_EnteredQuantity").clear()
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "addtocart_71_EnteredQuantity").send_keys(26)
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "add-to-cart-button-71").click()
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.ID, "add-to-wishlist-button-71").click()
-time.sleep(1)
+time.sleep(2)
 
 driver.find_element(By.LINK_TEXT, "Wishlist").click()
-time.sleep(1)
+time.sleep(2)
 
 checkboxes = driver.find_elements(By.CLASS_NAME, "add-to-cart")
 for checkbox in checkboxes:
@@ -77,7 +77,7 @@ time.sleep(2)
 
 sub_total = driver.find_element(By.CSS_SELECTOR, ".cart-total .product-price").text.replace("$", "")
 assert float(sub_total) == 1002600.00, f"Subtotal mismatch: {sub_total}"
-print("Automated Test Passed: Subtotal is correct!")
+print("Automated Test Passed: Subtotal matches")
 time.sleep(15)
 
 driver.quit()
