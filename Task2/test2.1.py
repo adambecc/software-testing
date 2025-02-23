@@ -7,7 +7,16 @@ import time
 
 driver = webdriver.Chrome()
 driver.get("https://demoqa.com/")
-time.sleep(1)
+time.sleep(2)
+
+try:
+    cookie_button = WebDriverWait(driver, 3).until(
+        EC.element_to_be_clickable((By.ID, "close-fixedban"))
+    )
+    cookie_button.click()
+    print("Closed cookie consent window.")
+except:
+    print("No cookie consent window found.")
 
 widgets_card = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, "//h5[text()='Widgets']"))
@@ -36,7 +45,7 @@ WebDriverWait(driver, 10).until(
 percentage = driver.find_element(By.CLASS_NAME, "progress-bar").text
 
 if percentage == "0%":
-    print("Successfully reset!")
+    print("Successful reset")
 else:
     print(f"Error: Progress bar shows {percentage}")
 
