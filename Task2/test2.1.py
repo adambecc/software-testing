@@ -14,9 +14,9 @@ try:
         EC.element_to_be_clickable((By.ID, "close-fixedban"))
     )
     cookie_button.click()
-    print("Closed cookie consent window.")
+    print("Cookie window closed")
 except:
-    print("No cookie consent window found.")
+    print("No cookie window ")
 
 widgets_card = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, "//h5[text()='Widgets']"))
@@ -43,6 +43,8 @@ WebDriverWait(driver, 10).until(
 )
 
 percentage = driver.find_element(By.CLASS_NAME, "progress-bar").text
+
+time.sleep(2)
 
 if percentage == "0%":
     print("Successful reset")
