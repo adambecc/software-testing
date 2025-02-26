@@ -1,19 +1,19 @@
-Since webdriver sessions must be separate, each of these processes will:
+# Since webdriver sessions must be separate, each of these processes will:
 
     -   Start and close a new WebDriver session
     -   USe unit test annotations for setup and teardown
     -   Store the created user's credentials for later use in tests
 
-Step 1: User Registration Script
+## Step 1: User Registration Script
 
     Open the website.
     Navigate to the "Register" page.
     Fill out and submit the form.
     Save the registered email and password in a file (user.json).
 
-Step 2: Implement Two Test Cases
+## Step 2: Implement Two Test Cases
 
-    Each test case will:
+    ### Each test case will:
 
         Read login credentials from user.json.
         Log in and navigate to "Digital downloads".
@@ -22,13 +22,14 @@ Step 2: Implement Two Test Cases
         Proceed through checkout.
         Verify order completion.
 
-Step 3: WebDriver Management
+## Step 3: WebDriver Management
 
     Use @classmethod annotations for setting up and tearing down WebDriver sessions.
     Each test case runs independently of the user creation step.
 
-Step 4: Running the Tests via Jenkins
+## Step 4: Running the Tests via Jenkins
 
-    Jenkins will execute:
+    ### Jenkins will execute:
+    
         User creation script first.
         Test 1 and Test 2 sequentially.
