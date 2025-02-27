@@ -46,7 +46,6 @@ for row in rows:
     cell_texts = [cell.text.strip() for cell in cells]
     if any(cell_texts):
         count += 1
-        #print(f"Row {count} contents: {cell_texts}")
 
 k=count
 
@@ -108,6 +107,6 @@ if num_of_pages == "1":
 else:
     print(f"Error")
 
-time.sleep (5)
+time.sleep (100)
 
 driver.quit()

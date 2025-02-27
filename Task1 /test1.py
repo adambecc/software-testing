@@ -6,15 +6,12 @@ import time
 
 driver = webdriver.Chrome()
 
-#abre la pagina
 driver.get("https://demowebshop.tricentis.com/")
 time.sleep(2)
 
-#selecciona el apartado de giftcards
 driver.find_element(By.CSS_SELECTOR, "a[href='/gift-cards']").click()
 time.sleep(2)
 
-#filtrar el precio > 99
 products = driver.find_elements(By.CSS_SELECTOR, ".product-grid .item-box")
 for product in products:
         price_text = product.find_element(By.CLASS_NAME, "price").text.replace("$", "")
@@ -22,9 +19,9 @@ for product in products:
             product.find_element(By.TAG_NAME, "a").click()
             time.sleep(2)
 
-driver.find_element(By.ID, "giftcard_4_RecipientName").send_keys("Elon Musk")
+driver.find_element(By.ID, "giftcard_4_RecipientName").send_keys("Adam Ben")
 time.sleep(2)
-driver.find_element(By.ID, "giftcard_4_SenderName").send_keys("Adam Becc")
+driver.find_element(By.ID, "giftcard_4_SenderName").send_keys("Sencer Eren")
 time.sleep(2)
 driver.find_element(By.ID, "addtocart_4_EnteredQuantity").clear()
 driver.find_element(By.ID, "addtocart_4_EnteredQuantity").send_keys(5000)
@@ -35,7 +32,6 @@ time.sleep(10)
 driver.find_element(By.ID, "add-to-wishlist-button-4").click()
 time.sleep(10)
 
-#driver.find_element(By.CSS_SELECTOR, "a[href='/jewelry']").click()
 driver.find_element(By.LINK_TEXT, "JEWELRY").click()
 time.sleep(2)
 

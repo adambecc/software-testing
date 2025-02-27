@@ -14,7 +14,7 @@ try:
         EC.element_to_be_clickable((By.ID, "close-fixedban"))
     )
     cookie_button.click()
-    print("Cookie window closed")
+    print("Cookies closed")
 except:
     print("No cookie window ")
 
