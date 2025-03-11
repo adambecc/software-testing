@@ -38,7 +38,6 @@ print("Processing items...")
 
 i = 0
 
-#process each item from file1
 for line1 in lines1:
     try:
         i += 1
@@ -57,7 +56,6 @@ for line1 in lines1:
     except Exception as e:
         print(f"Error adding {line1}: {str(e)}")
 
-#process each item from file 2
 for line2 in lines2:
     try:
         i += 1
@@ -82,9 +80,38 @@ time.sleep(2)
 driver.find_element(By.ID, "termsofservice").click()
 time.sleep(2)
 
-
 driver.find_element(By.ID, "checkout").click()
 time.sleep(2)
+
+try:
+    dropdown = Select(driver.find_element(By.ID, "BillingNewAddress_CountryId"))
+    dropdown.select_by_visible_text("Uzbekistan")
+    time.sleep(2)
+
+    city_input = driver.find_element(By.ID, "BillingNewAddress_City")
+    if not city_input.get_attribute('value'): 
+        city_input.send_keys("Tashkent")
+        time.sleep(2)
+
+    address_input = driver.find_element(By.ID, "BillingNewAddress_Address1")
+    if not address_input.get_attribute('value'):
+        address_input.send_keys("Random street...")
+        time.sleep(2)
+
+    zip_input = driver.find_element(By.ID, "BillingNewAddress_ZipPostalCode")
+    if not zip_input.get_attribute('value'): 
+        zip_input.send_keys("21244")
+        time.sleep(2)
+
+    phone_input = driver.find_element(By.ID, "BillingNewAddress_PhoneNumber")
+    if not phone_input.get_attribute('value'): 
+        phone_input.send_keys("+000 00 000 00")
+        time.sleep(2)
+
+except Exception as e:
+    print(f"Error: {e}")
+
+time.sleep(5)
 
 driver.find_element(By.CLASS_NAME, "button-1.new-address-next-step-button").click()
 time.sleep(2)
