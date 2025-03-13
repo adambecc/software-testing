@@ -15,14 +15,14 @@ with open("data2.txt", "r") as file2:
 
 driver = webdriver.Chrome()
 driver.get("https://demowebshop.tricentis.com/")
-driver.maximize_window()
+#driver.maximize_window()
 
 time.sleep(2)
 
 driver.find_element(By.LINK_TEXT, "Log in").click()
 time.sleep(2)
 
-driver.find_element(By.ID, "Email").send_keys("ElonMusk@ColdMail.Com")
+driver.find_element(By.ID, "Email").send_keys("Test@ColdMail.Com")
 time.sleep(2)
 
 driver.find_element(By.ID, "Password").send_keys("coldmail44")
@@ -129,8 +129,12 @@ print("Verifying order confirmation...")
 
 time.sleep(10)
 
-message = driver.find_element(By.XPATH, "//div[@class='section order-completed']//div[@class='title']/strong").text
-print(message)
+try:
+    message = driver.find_element(By.XPATH, "//div[@class='section order-completed']//div[@class='title']/strong").text
+    print(message)
+except Exception as ex:
+    print(f"The checkout was unsuccessful: {ex}")
+
 
 time.sleep(10)
 
